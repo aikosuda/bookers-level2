@@ -13,6 +13,8 @@
 	</table>
 	<% if @user.id == current_user.id %>
 		<p><%= link_to "編集", edit_user_path(@user) %></p>
+	<% else %>
+		<p><%= link_to "編集", user_path(current_user.id) %></p>
 	<% end %>
 </div>
 <div>
