@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
   	@user = User.find(current_user.id)
@@ -21,8 +21,11 @@ class UsersController < ApplicationController
 
   def update
   	@user = User.find(params[:id])
-  	@user.update(user_params)
-  	redirect_to user_path(params[:id])
+  	if @user.update(user_params)
+  	   redirect_to user_path(params[:id])
+    else
+      render :edit
+    end
   end
 
   private 
