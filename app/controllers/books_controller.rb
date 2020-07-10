@@ -15,7 +15,7 @@ class BooksController < ApplicationController
 		@book.user_id = current_user.id
   		if @book.save
   			flash[:create] = "You have creatad book successfully."
-  			redirect_to book_path(current_user.id)
+  			redirect_to book_path(@book)
   		else
   			render :index
   		end
