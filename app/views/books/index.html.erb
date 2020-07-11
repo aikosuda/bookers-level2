@@ -1,18 +1,17 @@
-<div class="container">
-<div>
+<div class="body">
+<div class="container" style="padding-top: 60px;">
 	<% if @book.errors.any? %>
 		<%= @book.errors.count %>errors prohibited this obj from being saved:
 		<% @book.errors.full_messages.each do |message| %>
 			<br><%= message %>
 		<% end %>
 	<% end %>
-</div>
 
-<div class ="row">
+	<div class ="row">
 	<div class="col-md-3">
 	<h2>User info</h2>
-	<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.jpg", size:'60x60' %>
-	<table>
+	<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
+	<table class="table">
 		<tr>
 			<th>name</th>
 			<th><%= @user.name %></th>
@@ -22,13 +21,19 @@
 			<th><%= @user.introduction %></th>
 		</tr>
 	</table>
+	<div class="row">
 	<% if @user.id == current_user.id %>
-		<p><%= link_to "編集", edit_user_path(@user) %></p>
+		<%= link_to edit_user_path(@user) do %>
+			<button class="col-md-12 btn btn-default glyphicon glyphicon-wrench">
+			<% end %>
+		
 	<% else %>
-		<p><%= link_to "編集", user_path(current_user.id) %></p>
+		<%= link_to user_path(current_user.id) do %>
+			<button class="col-md-12 btn btn-default glyphicon glyphicon-wrench">
+			<%= end %>
 	<% end %>
 	</div>
-	<div>
+
 		<h2>New book</h2>
 		<%= form_for(@book, url: books_path) do |f| %>
 			<div>
@@ -41,7 +46,6 @@
 			</div>	
 			<%= f.submit 'Create Book' %>
 		<% end %>
-	</div>
 	</div>
 
 	<div class="col-md-9">
@@ -67,6 +71,7 @@
 				</tbody>
 			</table>
 		<% end %>
+	</div>
 	</div>
 </div>
 </div>
