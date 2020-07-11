@@ -1,9 +1,24 @@
-<div>
-	<h1>welcome to Bookers  !!</h1>
-	<p>in Bookers,<br>
-		you can share and exchange your opinions , and emotions<br>
-		about various books!
-	</p>
+<div class="container", style="padding-top: 60px;">
+	<% if notice %>
+		<p><%= notice %></p>
+	<% end %>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3">
+			<h1>welcome to <span class="glyphicon glyphicon-book"></span><strong>Bookers</strong>  !!</h1>
+				<p style="line-height: 2;">in <span class="glyphicon glyphicon-book"></span><stong>Bookers,</stong><br>
+					you can share and exchange your opinions , impressions, and emotions<br>
+					about various books!
+				</p>
+			<div class="row">
+				<%= link_to user_session_path do %>
+					<button class="col-sm-10 col-sm-offset-1 btn btn-info">Log in</button>
+				<% end %>
+			</div>
+			<div class="row">
+				<%= link_to new_user_registration_path do %>
+					<button class="col-sm-10 col-sm-offset-1 btn btn-success">Sign Up</button>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
-<%= link_to 'Log in', user_session_path %>
-<%= link_to 'Sign up', new_user_registration_path %>
