@@ -7,7 +7,7 @@
 	<% end %>
 
 	<div class ="row">
-		<div class="col-sm-3">
+		<div class="col-xs-3">
 			<h2>User info</h2>
 			<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg", size:'100x100' %>
 			<table class="table", style="margin-top: 20px;">
@@ -23,11 +23,11 @@
 			<div class="row">
 				<% if @user.id == current_user.id %>
 					<%= link_to edit_user_path(@user) do %>
-					<button class="col-sm-12 btn btn-default glyphicon glyphicon-wrench">
+					<button class="col-xs-12 btn btn-default glyphicon glyphicon-wrench">
 					<% end %>
 				<% else %>
 					<%= link_to user_path(current_user.id) do %>
-					<button class="col-sm-12 btn btn-default glyphicon glyphicon-wrench"></button>
+					<button class="col-xs-12 btn btn-default glyphicon glyphicon-wrench"></button>
 					<% end %>
 				<% end %>
 			</div>
@@ -40,15 +40,15 @@
 				</div>
 				<div class="row", style="padding-top: 10px;">
 					<label for="book_body">Opinion</label>
-					<%= f.text_area :body, :class => 'col-sm-12'  %>
+					<%= f.text_area :body, :class => 'col-xs-12'  %>
 				</div>	
 				<div class="row", style="padding-top: 10px;">
-					<%= f.submit 'Create Book', :class=> 'col-sm-12 btn btn-primary' %>
+					<%= f.submit 'Create Book', :class=> 'col-xs-12 btn btn-primary' %>
 				</div>
 				<% end %>
 		</div>
 
-		<div class="col-sm-9">
+		<div class="col-xs-9">
 			<h2>Books</h2>
 				<table class="table table-hover">
 					<thead>
