@@ -74,9 +74,25 @@
 								<% end %>
 							</td>
 							<td><%= @books.body %></td>
+							<% if @books.favorited_by?(current_user) %>
+							<td>
+								<%= link_to book_favorites_path(@books), method: :delete do %>
+								<i class="fa fa-heart" aria-hidden="true" ></i>
+								<%= @books.favorites.count %>
+								<% end %>
+							</td>
+							<% else %>
+							<td>
+								<%= link_to book_favorites_path(@books), method: :post do %>
+								<i class="fa fa-heart-o" aria-hidden="true"></i>
+								<%= @books.favorites.count %>
+								<% end %>
+							</td>
+							<% end %>
 							<% if @user.id == current_user.id %>
 							<td><%= link_to 'Edit', edit_book_path(@books) %></td>
 							<td><%= link_to 'Destroy', book_path(@books), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+
 						</tr>
 						<% end %>
 					</tbody>
